@@ -1,0 +1,21 @@
+class Solution(object):
+    def decrypt(self, code, k):
+        """
+        :type code: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        if k==0:
+            code = [0] * len(code)
+            return code
+        new=code+code
+        n=len(code)
+        if k > 0:
+            for i in range(n):
+                code[i] = sum(new[i+1:i+k+1])
+        else:
+            k=-k
+            for i in range(n):
+                code[i] = sum(new[i+n-k:i+n])
+
+        return code
