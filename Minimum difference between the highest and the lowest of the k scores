@@ -1,0 +1,17 @@
+class Solution(object):
+    def minimumDifference(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        if k > len(nums) or len(nums) == 1:
+            return 0
+
+        nums.sort(reverse=True)
+
+        minimum=float('inf')
+        for i in range(len(nums)-int(k)+1):
+            minimum=min(minimum , nums[i] - nums[i+k-1])
+
+        return minimum
