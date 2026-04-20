@@ -1,0 +1,16 @@
+class Solution(object):
+    def maximumStrongPairXor(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        n=len(nums)
+
+        xor=0
+
+        for i in range(n):
+            for j in range(i,n,1):
+                if abs(nums[i] - nums[j]) <= min(nums[i],nums[j]):
+                    xor = max(xor,nums[i]^nums[j])
+
+        return xor
