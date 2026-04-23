@@ -1,0 +1,18 @@
+class Solution(object):
+    def findRepeatedDnaSequences(self, s):
+        """
+        :type s: str
+        :rtype: List[str]
+        """
+        n=len(s)
+        seq=[]
+        dt={}
+        for i in range(n-10+1):
+            sub = s[i:i+10]
+            if sub not in dt:
+                dt[sub]=1
+            else:
+                if dt[sub] == 1 and dt[sub] < 2:
+                    seq.append(sub)
+                    dt[sub] += 1
+        return seq
